@@ -15,7 +15,7 @@ use SimpleXMLElement;
 class Plugin implements PluginEntryPointInterface {
 
 	static $last_statement = null;
-	public function __invoke( RegistrationInterface $psalm, ?SimpleXMLElement $config = null ) {
+	public function __invoke( RegistrationInterface $psalm, ?SimpleXMLElement $config = null ): void {
 		$psalm->registerHooksFromClass( static::class );
 
 		array_map( [ $psalm, 'addStubFile' ], $this->getStubFiles() );
